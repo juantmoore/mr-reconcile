@@ -64,18 +64,6 @@ At scale, this creates unnecessary operational cost and a slow customer experien
 
 **Business pain:** Routine reconciliation questions consume expensive Solutions Engineering time and increase customer time-to-resolution.
 
-## Customer Constraints
-
-The proposed solution must preserve several important boundaries:
-
-* AcmeCommerce's existing payment and transaction systems remain the source of truth.
-* Existing payment infrastructure does not need to migrate to Vercel.
-* The LLM must not invent payment, fee, settlement, or transaction data.
-* The agent receives payment information only through narrowly scoped tools.
-* Only the minimum information required to investigate a reconciliation issue should be exposed to the AI layer.
-* Production connectivity to private customer systems must be controlled and authenticated.
-* The demo uses synthetic data only and contains no real merchant, customer, Coinbase, or transaction data.
-
 ## Proposed Solution
 
 Augment the existing payment platform with an AI-assisted reconciliation experience.
@@ -84,7 +72,7 @@ A merchant can provide a payment, order, or transaction identifier and ask a que
 
 > “Why doesn't this payment reconcile?”
 
-The reconciliation agent can then use narrowly scoped tools to retrieve authoritative information from the existing payment system, such as:
+The reconciliation agent can then use tools to retrieve information from the existing payment system, such as:
 
 * payment details
 * blockchain transaction details
@@ -92,7 +80,7 @@ The reconciliation agent can then use narrowly scoped tools to retrieve authorit
 * fees
 * payment status
 
-The agent uses that deterministic information to explain the discrepancy in clear language.
+The agent uses that information to explain the discrepancy.
 
 The AI assists with **investigation and explanation**. Existing payment systems remain responsible for establishing financial truth.
 
@@ -135,7 +123,3 @@ npm run dev
 ```
 
 Open `http://localhost:3000`.
-
-Copy `.env.example` to `.env.local` when wiring AI Gateway and the mock payments API.
-
-Never commit real credentials or secrets.
