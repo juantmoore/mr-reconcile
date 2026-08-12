@@ -20,6 +20,10 @@
 # production
 /build
 
+# Lambda deployment artifacts
+/services/acmecommerce-api/acmecommerce-api.zip
+/services/acmecommerce-api/response.json
+
 # misc
 .DS_Store
 *.pem

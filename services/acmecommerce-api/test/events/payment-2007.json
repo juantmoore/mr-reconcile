@@ -1,0 +1,11 @@
+{
+  "routeKey": "GET /payments/{paymentId}",
+  "requestContext": {
+    "http": {
+      "method": "GET"
+    }
+  },
+  "pathParameters": {
+    "paymentId": "pay_2007"
+  }
+}
