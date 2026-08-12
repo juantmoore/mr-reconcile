@@ -1,0 +1,152 @@
+[
+  {
+    "settlementId": "set_2001",
+    "paymentId": "pay_2001",
+    "grossUsd": 150.00,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": 150.00,
+    "settlementStatus": "COMPLETED",
+    "settledAt": "2023-10-25T08:15:00Z"
+  },
+  {
+    "settlementId": "set_2002",
+    "paymentId": "pay_2002",
+    "grossUsd": 500.00,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 1.50,
+      "platformUsd": 0.00
+    },
+    "netUsd": 498.50,
+    "settlementStatus": "COMPLETED",
+    "settledAt": "2023-10-25T09:25:00Z"
+  },
+  {
+    "settlementId": "set_2003",
+    "paymentId": "pay_2003",
+    "grossUsd": 75.50,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": 75.50,
+    "settlementStatus": "COMPLETED",
+    "settledAt": "2023-10-25T10:05:00Z"
+  },
+  {
+    "settlementId": "set_2004",
+    "paymentId": "pay_2004",
+    "grossUsd": 1197.30,
+    "adjustments": {
+      "quoteProtectionUsd": 2.70
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": 1200.00,
+    "settlementStatus": "COMPLETED",
+    "settledAt": "2023-10-25T11:40:00Z"
+  },
+  {
+    "settlementId": "set_2005",
+    "paymentId": "pay_2005",
+    "grossUsd": 25.00,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": 25.00,
+    "settlementStatus": "COMPLETED",
+    "settledAt": "2023-10-25T12:43:00Z"
+  },
+  {
+    "settlementId": "set_2006",
+    "paymentId": "pay_2006",
+    "grossUsd": 340.25,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": null,
+    "settlementStatus": "PENDING",
+    "settledAt": null
+  },
+  {
+    "settlementId": "set_2007",
+    "paymentId": "pay_2007",
+    "grossUsd": 889.91,
+    "adjustments": {
+      "quoteProtectionUsd": 0.09
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": null,
+    "settlementStatus": "PENDING",
+    "settledAt": null
+  },
+  {
+    "settlementId": "set_2008",
+    "paymentId": "pay_2008",
+    "grossUsd": 45.00,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": 45.00,
+    "settlementStatus": "COMPLETED",
+    "settledAt": "2023-10-25T15:18:00Z"
+  },
+  {
+    "settlementId": "set_2009",
+    "paymentId": "pay_2009",
+    "grossUsd": 2120.50,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 20.00
+    },
+    "netUsd": 2100.50,
+    "settlementStatus": "COMPLETED",
+    "settledAt": "2023-10-25T16:08:00Z"
+  },
+  {
+    "settlementId": "set_2010",
+    "paymentId": "pay_2010",
+    "grossUsd": 130.00,
+    "adjustments": {
+      "quoteProtectionUsd": 0.00
+    },
+    "fees": {
+      "networkUsd": 0.00,
+      "platformUsd": 0.00
+    },
+    "netUsd": null,
+    "settlementStatus": "PENDING",
+    "settledAt": null
+  }
+]
