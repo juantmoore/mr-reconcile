@@ -11,8 +11,7 @@ export interface Payment {
   paymentId: string;
   merchantOrderId: string;
   transactionHash: string;
-  amount: number;
-  currency: string;
+  expectedUsd: number;
   network: string;
   paymentStatus: "COMPLETED" | "PENDING";
   createdAt: string;

@@ -3,8 +3,7 @@
       "paymentId": "pay_2001",
       "merchantOrderId": "ORDER-2001",
       "transactionHash": "0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b",
-      "amount": 150.00,
-      "currency": "USDC",
+      "expectedUsd": 150.00,
       "network": "base",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T08:12:00Z"
@@ -13,8 +12,7 @@
       "paymentId": "pay_2002",
       "merchantOrderId": "ORDER-2002",
       "transactionHash": "0x2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c",
-      "amount": 500.00,
-      "currency": "USDC",
+      "expectedUsd": 500.00,
       "network": "base",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T09:20:00Z"
@@ -23,8 +21,7 @@
       "paymentId": "pay_2003",
       "merchantOrderId": "ORDER-2003",
       "transactionHash": "0x3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d",
-      "amount": 75.50,
-      "currency": "USDC",
+      "expectedUsd": 75.50,
       "network": "base",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T10:00:00Z"
@@ -32,9 +29,8 @@
     {
       "paymentId": "pay_2004",
       "merchantOrderId": "ORDER-2004",
-      "transactionHash": "0x4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e",
-      "amount": 1200.00,
-      "currency": "BTC",
+      "transactionHash": "f84130ff13b2c1d4c8d8f25173f683ec014a2faaa4b9fb7b288fbec7128bfdab",
+      "expectedUsd": 1200.00,
       "network": "bitcoin",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T11:25:00Z"
@@ -43,8 +39,7 @@
       "paymentId": "pay_2005",
       "merchantOrderId": "ORDER-2005",
       "transactionHash": "0x5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f",
-      "amount": 25.00,
-      "currency": "USDC",
+      "expectedUsd": 25.00,
       "network": "base",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T12:40:00Z"
@@ -53,8 +48,7 @@
       "paymentId": "pay_2006",
       "merchantOrderId": "ORDER-2006",
       "transactionHash": "0x6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a",
-      "amount": 340.25,
-      "currency": "ETH",
+      "expectedUsd": 340.25,
       "network": "ethereum",
       "paymentStatus": "PENDING",
       "createdAt": "2023-10-25T13:05:00Z"
@@ -62,9 +56,8 @@
     {
       "paymentId": "pay_2007",
       "merchantOrderId": "ORDER-2007",
-      "transactionHash": "0x7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b",
-      "amount": 890.00,
-      "currency": "BTC",
+      "transactionHash": "db5950566eb16cc1a4084be79c9873317aafe46980693f4f69ade9b0ce9ac2c1",
+      "expectedUsd": 890.00,
       "network": "bitcoin",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T14:50:00Z"
@@ -73,8 +66,7 @@
       "paymentId": "pay_2008",
       "merchantOrderId": "ORDER-2008",
       "transactionHash": "0x8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c",
-      "amount": 45.00,
-      "currency": "USDC",
+      "expectedUsd": 45.00,
       "network": "base",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T15:15:00Z"
@@ -83,8 +75,7 @@
       "paymentId": "pay_2009",
       "merchantOrderId": "ORDER-2009",
       "transactionHash": "0x9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d",
-      "amount": 2100.50,
-      "currency": "ETH",
+      "expectedUsd": 2100.50,
       "network": "ethereum",
       "paymentStatus": "COMPLETED",
       "createdAt": "2023-10-25T16:00:00Z"
@@ -92,9 +83,8 @@
     {
       "paymentId": "pay_2010",
       "merchantOrderId": "ORDER-2010",
-      "transactionHash": "0x0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e",
-      "amount": 130.00,
-      "currency": "BTC",
+      "transactionHash": "6b21ff0898b6f03f353905a88e8046dd1d63d9c5158a9ce7d7b41afc12f811cd",
+      "expectedUsd": 130.00,
       "network": "bitcoin",
       "paymentStatus": "PENDING",
       "createdAt": "2023-10-25T17:40:00Z"

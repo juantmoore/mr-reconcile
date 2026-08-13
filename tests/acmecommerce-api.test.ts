@@ -10,7 +10,7 @@ import {
 
 const KNOWN_PAYMENT_ID = "pay_2007";
 const KNOWN_TRANSACTION_HASH =
-  "0x7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b";
+  "db5950566eb16cc1a4084be79c9873317aafe46980693f4f69ade9b0ce9ac2c1";
 
 test("getTransaction returns the known transaction", async () => {
   const transaction = await getTransaction(KNOWN_TRANSACTION_HASH);

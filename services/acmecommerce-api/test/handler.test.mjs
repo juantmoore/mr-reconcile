@@ -46,7 +46,8 @@ test("returns payment pay_2007", async () => {
   assert.equal(response.statusCode, 200);
   assert.equal(body.paymentId, "pay_2007");
   assert.equal(body.merchantOrderId, "ORDER-2007");
-  assert.equal(body.amount, 890);
+  assert.equal(body.expectedUsd, 890);
+  assert.equal(body.currency, undefined);
 });
 
 test("returns 404 for an unknown payment", async () => {
