@@ -1,26 +1,37 @@
+import Link from "next/link";
+
 const NAV_ITEMS = [
-  { label: "Ask", href: "/", active: true },
-  { label: "Example Cases", href: "/examples", active: false },
-  { label: "Architecture", href: "/architecture", active: false },
+  { label: "Ask", href: "/" },
+  { label: "Examples", href: "/examples" },
+  { label: "Architecture", href: "/architecture" },
 ];
 
-export function Header({ initials = "SE" }: { initials?: string }) {
+export function Header({
+  initials = "SE",
+  activePath = "/",
+}: {
+  initials?: string;
+  activePath?: string;
+}) {
   return (
     <header className="site-header">
-      <a href="/" className="brand">
+      <Link href="/" className="brand" aria-label="Mr. Reconcile home">
         Mr. Reconcile<span className="brand__dot">.</span>
-      </a>
-      <nav className="site-nav">
+      </Link>
+      <nav className="site-nav" aria-label="Primary navigation">
         {NAV_ITEMS.map((item) => (
-          <a
+          <Link
             key={item.label}
             href={item.href}
-            className={`site-nav__link${item.active ? " site-nav__link--active" : ""}`}
+            className={`site-nav__link${activePath === item.href ? " site-nav__link--active" : ""}`}
+            aria-current={activePath === item.href ? "page" : undefined}
           >
             {item.label}
-          </a>
+          </Link>
         ))}
-        <div className="avatar">{initials}</div>
+        <div className="avatar" aria-label={`Signed in as ${initials}`}>
+          {initials}
+        </div>
       </nav>
     </header>
   );
