@@ -1,6 +1,10 @@
-# Dude, Where's My Funds?
+# Mr. Reconcile
 
-An AI-assisted payment reconciliation proof of concept built for the Vercel Solutions Architect take-home assessment.
+Mr. Reconcile is an AI-assisted payment reconciliation agent built for the Vercel Solutions Architect take-home assessment.
+
+## Live Demo
+
+https://mr-reconcile.vercel.app
 
 ## Problem Statement
 
@@ -115,11 +119,17 @@ All payment, merchant, transaction, pricing, and settlement information used by 
 
 The scenario is informed by real-world payment reconciliation workflows but does not reproduce confidential customer or company data.
 
-## Getting Started
+## Local Setup
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
+
+Set these values in `.env.local` before starting the application:
+
+* `AI_GATEWAY_API_KEY` authenticates local requests to Vercel AI Gateway.
+* `ACMECOMMERCE_API_BASE_URL` points Mr. Reconcile at the AcmeCommerce API.
 
 Open `http://localhost:3000`.
