@@ -1,0 +1,85 @@
+[
+  {
+    "id": "pay_2002-fee-discrepancy",
+    "prompt": "Why did ShopCo record $498.50 instead of $500 for pay_2002?",
+    "requiredTools": [
+      "get-payment-details",
+      "get-settlement-details"
+    ],
+    "requiredFacts": [
+      ["payment", "completed"],
+      ["gross", "500"],
+      ["network fee", "1.50"],
+      ["net", "498.50"]
+    ],
+    "prohibitedClaims": [
+      {
+        "description": "the payment failed",
+        "pattern": "payment\\s+(?:itself\\s+)?(?:is|was|has\\s+been)\\s+(?:failed|unsuccessful|declined)"
+      }
+    ],
+    "maxSteps": 6
+  },
+  {
+    "id": "pay_2004-quote-protection",
+    "prompt": "Explain the BTC price movement and reconciliation result for pay_2004.",
+    "requiredTools": [
+      "get-payment-details",
+      "get-transaction-details",
+      "get-settlement-details"
+    ],
+    "requiredFacts": [
+      ["quote", "execution", "price"],
+      ["quote protection", "2.70"],
+      ["settlement", "completed"],
+      ["settlement", "1,200"]
+    ],
+    "prohibitedClaims": [
+      {
+        "description": "the funds are missing",
+        "pattern": "(?:your|the)\\s+funds\\s+(?:are|remain|appear)\\s+missing"
+      }
+    ],
+    "maxSteps": 6
+  },
+  {
+    "id": "pay_2007-pending-settlement",
+    "prompt": "Where are my funds for pay_2007?",
+    "requiredTools": [
+      "get-payment-details",
+      "get-transaction-details",
+      "get-settlement-details"
+    ],
+    "requiredFacts": [
+      ["payment", "completed"],
+      ["transaction", "confirmed"],
+      ["settlement", "pending"]
+    ],
+    "prohibitedClaims": [
+      {
+        "description": "an invented or estimated numeric final/net payout",
+        "pattern": "(?:net(?:\\s+(?:amount|payout))?|final\\s+payout)[^\\n]{0,40}(?:is|equals|will\\s+be|of|:)\\s*(?:approximately\\s*|about\\s*|estimated\\s*|~\\s*)?(?:\\$|usd\\s*)?\\d"
+      }
+    ],
+    "maxSteps": 6
+  },
+  {
+    "id": "pay_2010-pending-confirmations",
+    "prompt": "What is holding up pay_2010?",
+    "requiredTools": [
+      "get-payment-details",
+      "get-transaction-details"
+    ],
+    "requiredFacts": [
+      ["transaction", "pending"],
+      ["2", "3", "confirmation"]
+    ],
+    "prohibitedClaims": [
+      {
+        "description": "settlement is completed",
+        "pattern": "settlement\\s+(?:is|was|has\\s+been)\\s+(?:completed|complete|finalized|settled)"
+      }
+    ],
+    "maxSteps": 6
+  }
+]
