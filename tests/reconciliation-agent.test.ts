@@ -45,7 +45,7 @@ test("reconciliationAgent investigates pay_2007 through its tools", async () => 
   );
   assert.match(
     result.text,
-    /\bnet(?:Usd|\s+(?:amount|payout))?\b[\s\S]{0,120}\b(?:null|not (?:yet )?available|unavailable|not (?:been )?(?:calculated|finalized|recorded)|cannot provide)\b/i,
+    /\b(?:net(?:Usd|\s+(?:amount|payout))?|(?:final\s+)?(?:net\s+)?settlement amount)\b[\s\S]{0,120}\b(?:null|not (?:yet )?available|unavailable|not (?:been )?(?:calculated|finalized|recorded)|cannot provide)\b/i,
     "expected the response to explain that no authoritative net amount is available",
   );
   assert.doesNotMatch(
