@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Static design-handoff references are not application source.
+    "docs/design_handoff_mr_reconcile/**",
   ]),
 ]);
 

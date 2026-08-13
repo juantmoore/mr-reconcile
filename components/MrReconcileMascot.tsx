@@ -1,0 +1,116 @@
+export function MrReconcileMascot({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 340 330"
+      className={className}
+      role="img"
+      aria-label="Mr. Reconcile: a bowler hat floating above a magnifying glass inspecting a coin"
+      style={{ color: "var(--ink)" }}
+    >
+      <circle
+        cx="26"
+        cy="262"
+        r="4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <circle
+        cx="56"
+        cy="251"
+        r="5.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <circle
+        cx="88"
+        cy="239"
+        r="7"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+      />
+      <circle
+        cx="120"
+        cy="227"
+        r="8.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.4"
+      />
+      <circle
+        cx="200"
+        cy="196"
+        r="78"
+        fill="var(--paper-lens)"
+        stroke="currentColor"
+        strokeWidth="3.5"
+      />
+      <path
+        d="M 150 156 A 64 64 0 0 1 172 133"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <circle
+        cx="200"
+        cy="200"
+        r="30"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+      />
+      <circle
+        cx="200"
+        cy="200"
+        r="23"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.3"
+      />
+      <text
+        x="200"
+        y="211"
+        textAnchor="middle"
+        fontFamily="var(--font-serif), serif"
+        fontSize="30"
+        fontWeight="500"
+        fill="currentColor"
+      >
+        $
+      </text>
+      <line
+        x1="256"
+        y1="252"
+        x2="306"
+        y2="303"
+        stroke="currentColor"
+        strokeWidth="11"
+        strokeLinecap="round"
+      />
+      <path
+        d="M 158 64 A 42 40 0 0 1 242 64"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+      />
+      <path
+        d="M 163 51 Q 200 43 237 51"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+      />
+      <ellipse
+        cx="200"
+        cy="66"
+        rx="56"
+        ry="9"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+      />
+    </svg>
+  );
+}
