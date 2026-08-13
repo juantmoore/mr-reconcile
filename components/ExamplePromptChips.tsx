@@ -1,10 +1,19 @@
-// Presentational only — chips have no click handlers yet.
-// When wired, clicking a chip should populate/submit the ask input.
-export function ExamplePromptChips({ prompts }: { prompts: string[] }) {
+export function ExamplePromptChips({
+  prompts,
+  onSelect,
+}: {
+  prompts: string[];
+  onSelect: (prompt: string) => void;
+}) {
   return (
-    <div className="prompt-chips">
+    <div className="prompt-chips" aria-label="Example questions">
       {prompts.map((prompt) => (
-        <button key={prompt} type="button" className="chip">
+        <button
+          key={prompt}
+          type="button"
+          className="chip"
+          onClick={() => onSelect(prompt)}
+        >
           {prompt}
         </button>
       ))}

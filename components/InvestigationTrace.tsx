@@ -1,20 +1,22 @@
 import { StatusBadge, type BadgeTone } from "./StatusBadge";
 
-// Customer-facing investigation steps. Never pass raw internal tool names
-// (getPaymentDetails, getTransactionDetails, getSettlementDetails) as labels —
-// map them to customer language ("Payment lookup", "Blockchain verification",
-// "Settlement lookup") before rendering.
-export type StepStatus = "completed" | "confirmed" | "pending";
+export type StepStatus =
+  | "checking"
+  | "completed"
+  | "confirmed"
+  | "pending";
 
 export interface InvestigationStep {
+  type: "payment" | "transaction" | "settlement";
   label: string;
   detail?: string;
   reference: string;
-  amount: string; // pre-formatted display string; "—" when not applicable
+  amount: string;
   status: StepStatus;
 }
 
 const STATUS_DISPLAY: Record<StepStatus, { text: string; tone: BadgeTone }> = {
+  checking: { text: "Checking…", tone: "neutral" },
   completed: { text: "Completed", tone: "neutral" },
   confirmed: { text: "Confirmed", tone: "neutral" },
   pending: { text: "Pending", tone: "pending" },
@@ -25,11 +27,14 @@ export function InvestigationTrace({
   quote,
 }: {
   steps: InvestigationStep[];
-  quote?: string; // optional closing line from the agent
+  quote?: string;
 }) {
-  const done = steps.filter((s) => s.status !== "pending").length;
+  const done = steps.filter(
+    (step) => step.status === "completed" || step.status === "confirmed",
+  ).length;
+
   return (
-    <section className="ruled-section" style={{ paddingTop: 64 }}>
+    <section className="ruled-section investigation-section" id="investigation">
       <div className="ruled-section__head">
         <div className="overline">Investigation</div>
         <div className="ruled-section__meta">
@@ -37,7 +42,7 @@ export function InvestigationTrace({
         </div>
       </div>
       <div className="trace">
-        <div className="trace__head">
+        <div className="trace__head" aria-hidden="true">
           <div>Step</div>
           <div>Reference</div>
           <div className="-right">Amount</div>
@@ -45,11 +50,14 @@ export function InvestigationTrace({
         </div>
         {steps.map((row) => {
           const status = STATUS_DISPLAY[row.status];
+
           return (
             <div key={row.label + row.reference} className="trace__row">
               <div className="trace__step-cell">
                 <div className="trace__step">{row.label}</div>
-                {row.detail && <div className="trace__detail">{row.detail}</div>}
+                {row.detail && (
+                  <div className="trace__detail">{row.detail}</div>
+                )}
               </div>
               <div className="trace__ref">{row.reference}</div>
               <div className="trace__amount">{row.amount}</div>
@@ -60,7 +68,11 @@ export function InvestigationTrace({
           );
         })}
       </div>
-      {quote && <p className="trace-quote">“{quote}” — Mr. Reconcile</p>}
+      {quote && (
+        <p className="trace-quote">
+          “{quote}” — Mr. Reconcile
+        </p>
+      )}
     </section>
   );
 }
