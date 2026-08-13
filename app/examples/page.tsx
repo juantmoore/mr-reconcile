@@ -16,10 +16,11 @@ const CASES = [
       "A completed payment where network fees explain the difference between the expected payment and merchant settlement.",
   },
   {
-    title: "BTC reconciliation",
-    prompt: "Explain the BTC reconciliation for pay_2004.",
+    title: "BTC payment",
+    prompt:
+      "Why doesn't the BTC payment for pay_2004 match the expected amount?",
     description:
-      "A Bitcoin payment where pricing and quote protection affect reconciliation.",
+      "A Bitcoin payment showing why the expected merchant amount can differ from the blockchain transaction value and how quote protection affects reconciliation.",
   },
   {
     title: "Missing funds",
@@ -29,7 +30,7 @@ const CASES = [
   },
   {
     title: "Pending confirmations",
-    prompt: "What is holding up pay_2010?",
+    prompt: "Why is pay_2010 still pending?",
     description:
       "A Bitcoin transaction that has not yet reached its required confirmation threshold.",
   },

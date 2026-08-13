@@ -17,15 +17,16 @@ const EXAMPLE_PROMPTS = [
   },
   {
     label: "BTC payment",
-    question: "Explain the BTC reconciliation for pay_2004.",
+    question:
+      "Why doesn't the BTC payment for pay_2004 match the expected amount?",
   },
   {
     label: "Missing funds",
     question: "Where are my funds for pay_2007?",
   },
   {
-    label: "Pending settlement",
-    question: "What is holding up pay_2010?",
+    label: "Pending confirmations",
+    question: "Why is pay_2010 still pending?",
   },
 ];
 

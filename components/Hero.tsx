@@ -19,7 +19,6 @@ export function Hero({
         </div>
         <figure className="mascot-fig">
           <MrReconcileMascot />
-          <figcaption>fig. 1 — the agent, on the trail</figcaption>
         </figure>
       </div>
     </section>

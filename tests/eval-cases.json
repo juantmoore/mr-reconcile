@@ -1,7 +1,7 @@
 [
   {
     "id": "pay_2002-fee-discrepancy",
-    "prompt": "Why did ShopCo record $498.50 instead of $500 for pay_2002?",
+    "prompt": "Why did pay_2002 settle for less than expected?",
     "requiredTools": [
       "get-payment-details",
       "get-settlement-details"
@@ -22,7 +22,7 @@
   },
   {
     "id": "pay_2004-quote-protection",
-    "prompt": "Explain the BTC price movement and reconciliation result for pay_2004.",
+    "prompt": "Why doesn't the BTC payment for pay_2004 match the expected amount?",
     "requiredTools": [
       "get-payment-details",
       "get-transaction-details",
@@ -65,7 +65,7 @@
   },
   {
     "id": "pay_2010-pending-confirmations",
-    "prompt": "What is holding up pay_2010?",
+    "prompt": "Why is pay_2010 still pending?",
     "requiredTools": [
       "get-payment-details",
       "get-transaction-details"

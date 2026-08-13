@@ -64,7 +64,7 @@ export function mapInvestigationSteps(
         steps.push({
           type: "transaction",
           label: "Blockchain verification",
-          detail: `${transaction.confirmations} of ${transaction.requiredConfirmations} confirmations`,
+          detail: `${transaction.confirmations} confirmations · ${transaction.requiredConfirmations} required`,
           reference: shortenHash(transaction.transactionHash),
           amount: `${transaction.assetAmount} ${transaction.asset}`,
           status:
