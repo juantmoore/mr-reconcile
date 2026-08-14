@@ -2,134 +2,253 @@
 
 Mr. Reconcile is an AI-assisted payment reconciliation agent built for the Vercel Solutions Architect take-home assessment.
 
+It demonstrates how Vercel can augment an existing payment platform with a natural-language investigation experience while preserving the underlying payment infrastructure as the system of record.
+
 ## Live Demo
 
 https://mr-reconcile.vercel.app
 
+## Customer Proposal
+
+https://reconcile-1.vercel.app
+
 ## Problem Statement
 
-Can we move common payment-reconciliation investigations from synchronous Solutions Engineering escalations to secure, AI-assisted self-service while preserving the existing payment system as the source of truth?
+Can we move common payment-reconciliation investigations from synchronous Solutions Engineering escalations toward AI-assisted self-service while preserving the existing payment system as the source of truth?
 
 ## Scenario
 
-This project models two fictional businesses:
+This project models two fictional businesses.
 
 ### AcmeCommerce
 
-AcmeCommerce provides a crypto payment product that merchants can integrate into their e-commerce applications.
+AcmeCommerce provides a crypto payment product that merchants integrate into their applications.
 
-Its Solutions Engineers help merchants troubleshoot integrations and investigate payment discrepancies.
+Its Support and Solutions Engineering teams help merchants troubleshoot integrations and investigate payment discrepancies.
 
 ### ShopCo
 
 ShopCo sells GPUs, local inference hardware, and prebuilt Linux-based AI systems.
 
-ShopCo has integrated AcmeCommerce into its checkout experience and occasionally needs help reconciling crypto payments against its internal order and accounting records.
+ShopCo uses AcmeCommerce for payments and occasionally needs help reconciling expected payments against blockchain activity and settlement records.
 
 ## The Problem
 
-Most payments reconcile normally. Occasionally, ShopCo's accounting or engineering team sees a discrepancy.
+Most payments reconcile normally. Occasionally, ShopCo sees a missing, delayed, or mismatched payment.
 
 For example:
 
-> “Our order says the customer paid $1,200, but our records show $1,183.30. Where did the difference come from?”
+> “Our order says the customer paid $1,200, but our records show something different. What happened?”
 
-Possible explanations include:
+Answering that question may require correlating:
 
-* cryptocurrency price movement
-* network or settlement fees
-* platform fees
-* transaction-to-order mapping issues
-* payments that are still pending or failed
+- payment status
+- blockchain transaction state
+- confirmations
+- quote and execution pricing
+- network or platform fees
+- settlement status
+- final merchant payout
 
-A seemingly simple question can trigger a manual investigation involving both companies:
+A seemingly simple question can create a manual workflow:
 
 ```text
-Merchant identifies discrepancy
+ShopCo identifies a discrepancy
         ↓
-Contact AcmeCommerce
+Contacts AcmeCommerce
         ↓
-Collect transaction/payment information
+Support / Solutions Engineering investigates
         ↓
-Solutions Engineer investigates internal systems
+Payment, transaction, and settlement records are correlated
         ↓
-Correlate payment, transaction, and settlement records
+Back-and-forth with the merchant
         ↓
-Back-and-forth with customer
-        ↓
-Potential live troubleshooting call
-        ↓
-Explain reconciliation
+Reconciliation is explained
 ```
 
-At scale, this creates unnecessary operational cost and a slow customer experience.
+In the representative scenario, these investigations can consume **3–12 hours per week in aggregate across Support and Solutions Engineering**.
 
-**Technical pain:** Payment information must be correlated across systems before a discrepancy can be explained.
+**Technical friction:** Financial state must be correlated across multiple systems before a discrepancy can be explained.
 
-**Business pain:** Routine reconciliation questions consume expensive Solutions Engineering time and increase customer time-to-resolution.
+**Business friction:** Routine reconciliation questions consume specialist time and increase merchant time-to-resolution.
 
 ## Proposed Solution
 
-Augment the existing payment platform with an AI-assisted reconciliation experience.
+Mr. Reconcile **augments rather than replaces** AcmeCommerce's existing payment infrastructure.
 
-A merchant can provide a payment, order, or transaction identifier and ask a question such as:
+A ShopCo merchant can ask a natural-language question such as:
 
-> “Why doesn't this payment reconcile?”
+> “Where are my funds for pay_2007?”
 
-The reconciliation agent can then use tools to retrieve information from the existing payment system, such as:
+The agent can use narrowly scoped tools to retrieve authoritative:
 
-* payment details
-* blockchain transaction details
-* settlement details
-* fees
-* payment status
+- payment details
+- blockchain transaction details
+- settlement details
 
-The agent uses that information to explain the discrepancy.
+It then explains the investigation in plain language.
 
-The AI assists with **investigation and explanation**. Existing payment systems remain responsible for establishing financial truth.
+The existing payment system remains responsible for establishing financial truth.
 
-## Target Outcomes
+> **The LLM explains the truth; it does not define the truth.**
 
-The proof of concept is designed around two measurable outcomes:
-
-* Reduce time-to-reconciliation for common payment questions.
-* Reduce the number of routine reconciliation issues requiring a Solutions Engineer.
-
-Additional production metrics could include self-service resolution rate and escalation rate.
+Operational payment, blockchain, and settlement states shown in the interface are derived from structured tool results rather than generated model prose.
 
 ## Architecture
 
-### Application Stack
+```text
+Browser / User
+      ↓
+Next.js on Vercel
+      ↓
+POST /api/chat
+      ↓
+Vercel Function + Fluid Compute
+      ↓
+AI SDK ToolLoopAgent
+      ↕
+AI Gateway
+      ↓
+Reconciliation Tools
+Payment · Transaction · Settlement
+      ↓
+AcmeCommerce API Client
+      ↓
+Public HTTPS
+      ↓
+AWS API Gateway
+      ↓
+AWS Lambda
+      ↓
+Authoritative Synthetic Data
+Payments · Transactions · Settlements
+```
 
-* Next.js
-* TypeScript
-* Deployed on Vercel
+### What Stays Outside Vercel
 
-### Vercel Primitives
+AcmeCommerce's existing payment infrastructure remains on AWS.
 
-* **AI SDK** — agent orchestration, tool calling, and streaming
-* **AI Gateway** — model access, routing, observability, and provider flexibility
-* **Secure Compute** — production connectivity between the Vercel application and private customer infrastructure
+For the proof of concept, that environment is represented by:
 
-For the proof of concept, the customer's existing payment environment will be represented by a realistic external mock API. Secure Compute represents the intended production connectivity model rather than something required for the initial demo.
+- AWS API Gateway
+- AWS Lambda
+- synthetic payment, transaction, and settlement records
+
+The goal is not to migrate the payment platform. The goal is to add a better investigation experience around systems that already own the authoritative financial state.
+
+## Vercel Products
+
+### AI SDK
+
+Used for:
+
+- `ToolLoopAgent`
+- tool calling
+- multi-step investigation
+- streaming responses
+- client/server AI message handling
+
+### AI Gateway
+
+Provides the model-access boundary between the application and the underlying model.
+
+This keeps model integration separate from application logic and creates a path toward centralized AI usage visibility and future model flexibility.
+
+Provider failover is not demonstrated in the current proof of concept.
+
+### Vercel Functions + Fluid Compute
+
+`/api/chat` runs server-side as a Vercel Function with Fluid Compute enabled.
+
+This execution layer handles:
+
+- agent execution
+- model interaction
+- tool calls
+- outbound requests to AcmeCommerce
+- streamed responses back to the client
+
+The Vercel Function is deployed in `iad1` / US East, geographically aligned with the representative AWS Lambda deployment in US East.
+
+### Framework
+
+The application is built with Next.js and TypeScript.
+
+Next.js is the application framework and is not counted as one of the three primary Vercel product choices.
+
+## Customer Experience
+
+Today:
+
+```text
+Payment discrepancy
+      ↓
+Support escalation
+      ↓
+Solutions Engineer investigation
+      ↓
+Merchant explanation
+```
+
+With Mr. Reconcile:
+
+```text
+Payment discrepancy
+      ↓
+Ask a natural-language question
+      ↓
+Agent investigates authoritative systems
+      ↓
+Plain-language explanation
+      ↓
+Escalate only when necessary
+```
+
+The goal is not to introduce a new reconciliation language or operational toolset. Merchants ask the question the way they already would.
+
+## Outcomes to Validate
+
+The proposed pilot would evaluate:
+
+- **Reconciliation deflection** — reduce supported cases requiring Support or Solutions Engineering intervention.
+- **Time to resolution** — resolve common supported investigations in under 30 seconds.
+- **Financial correctness** — zero fabricated payouts across the evaluation set.
+- **Investigation reliability** — measure correct tool execution and explanation across supported reconciliation scenarios.
+
+These are proposed pilot measures, not claimed production results.
+
+## Known Limitations
+
+This is a focused proof of concept.
+
+- **Synthetic data:** No real merchant financial information is used.
+- **Authentication and authorization:** The public demo intentionally does not implement merchant identity or tenant authorization.
+- **Network boundary:** The current Vercel-to-AWS integration uses public HTTPS.
+- **Agent nondeterminism:** Model-driven tool selection can produce different investigation paths across runs. Higher-risk mandatory financial checks may warrant deterministic application logic.
+- **Durability and history:** Investigations are interactive and short-lived; no persistent audit trail is currently stored.
+
+## Validation
+
+The project was validated with:
+
+- Lambda tests
+- AcmeCommerce API integration tests
+- reconciliation tool integration tests
+- agent tests and evaluation cases
+- ESLint
+- TypeScript
+- production builds
+- production end-to-end smoke tests
+
+The evaluation suite covers scenarios including:
+
+- fee discrepancies
+- BTC quote protection
+- pending settlement without an authoritative payout
+- insufficient blockchain confirmations
 
 ## Data
 
-All payment, merchant, transaction, pricing, and settlement information used by this project is synthetic.
+All merchant, payment, transaction, pricing, and settlement information in this project is synthetic.
 
-The scenario is informed by real-world payment reconciliation workflows but does not reproduce confidential customer or company data.
-
-## Local Setup
-
-```bash
-npm install
-cp .env.example .env.local
-npm run dev
-```
-
-Set these values in `.env.local` before starting the application:
-
-* `AI_GATEWAY_API_KEY` authenticates local requests to Vercel AI Gateway.
-* `ACMECOMMERCE_API_BASE_URL` points Mr. Reconcile at the AcmeCommerce API.
-
-Open `http://localhost:3000`.
+The scenario is informed by real-world payment-reconciliation workflows but does not reproduce confidential customer or company data.
