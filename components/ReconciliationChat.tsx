@@ -81,7 +81,9 @@ export function ReconciliationChat() {
         disabled={isInvestigating}
       >
         <div className="example-prompts">
-          <div className="example-prompts__title">Start with an example</div>
+          <div className="example-prompts__title">
+            Click a chip to get started
+          </div>
           <p className="example-prompts__helper">
             Choose a common reconciliation scenario to populate the question.
           </p>
@@ -110,10 +112,10 @@ export function ReconciliationChat() {
                 label={
                   settlementStep.status === "pending"
                     ? "Settlement pending"
-                    : "Settlement completed"
+                    : "Settlement Complete"
                 }
                 tone={
-                  settlementStep.status === "pending" ? "pending" : "neutral"
+                  settlementStep.status === "pending" ? "pending" : "success"
                 }
                 pill
               />
@@ -125,19 +127,6 @@ export function ReconciliationChat() {
           ) : (
             <p style={{ margin: 0 }}>Mr. Reconcile is investigating…</p>
           )}
-
-          <ExamplePromptChips
-            prompts={EXAMPLE_PROMPTS.map((item) => item.label)}
-            onSelect={(label) => {
-              const example = EXAMPLE_PROMPTS.find(
-                (item) => item.label === label,
-              );
-
-              if (example) {
-                setInput(example.question);
-              }
-            }}
-          />
         </AnswerSection>
       )}
 

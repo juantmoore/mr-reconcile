@@ -9,6 +9,7 @@
   --hairline: #d8d4c6;
   --chip-border: #b9b4a4;
   --accent: #a13d2b;
+  --success: #287a45;
 }
 
 * {
@@ -246,6 +247,10 @@ a:focus-visible {
   flex-wrap: wrap;
 }
 
+.example-prompts {
+  margin-top: 28px;
+}
+
 .example-prompts__title {
   font-family: var(--font-sans), sans-serif;
   font-size: 14px;
@@ -281,23 +286,23 @@ a:focus-visible {
 }
 
 .example-prompts .chip {
-  animation: chip-attention 850ms ease-out both;
+  animation: chip-attention 850ms ease-out;
 }
 
 .example-prompts .chip:nth-child(1) {
-  animation-delay: 350ms;
+  animation-delay: 10s;
 }
 
 .example-prompts .chip:nth-child(2) {
-  animation-delay: 520ms;
+  animation-delay: 10.17s;
 }
 
 .example-prompts .chip:nth-child(3) {
-  animation-delay: 690ms;
+  animation-delay: 10.34s;
 }
 
 .example-prompts .chip:nth-child(4) {
-  animation-delay: 860ms;
+  animation-delay: 10.51s;
 }
 
 .chip:hover {
@@ -407,6 +412,10 @@ a:focus-visible {
 
 .status-badge--pending {
   color: var(--accent);
+}
+
+.status-badge--success {
+  color: var(--success);
 }
 
 .status-badge--pill {

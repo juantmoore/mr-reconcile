@@ -1,4 +1,4 @@
-export type BadgeTone = "neutral" | "pending";
+export type BadgeTone = "neutral" | "pending" | "success";
 
 export function StatusBadge({
   label,
