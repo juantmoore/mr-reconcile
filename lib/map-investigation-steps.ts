@@ -33,7 +33,7 @@ export function mapInvestigationSteps(
           label: "Payment lookup",
           detail: "Payment record retrieved",
           reference: payment.paymentId,
-          amount: "—",
+          amount: `$${payment.expectedUsd.toFixed(2)}`,
           status:
             payment.paymentStatus === "COMPLETED"
               ? "completed"
